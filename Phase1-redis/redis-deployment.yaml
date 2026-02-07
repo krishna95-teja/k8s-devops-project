@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment                  # Using deployment in phase 1 as a learning curve, will later be switching to statefulsets as project progresses.
+metadata:
+   name: redis-dep
+   namespace: app-dev
+spec:
+   replicas: 1                           
+   selector:
+      matchLabels:
+         app: redis
+   template:
+      metadata:
+         labels:
+            app: redis
+      spec:
+         containers:
+            - name: redis-container
+              image: redis:7
+              ports:
+                 - containerPort: 6379
