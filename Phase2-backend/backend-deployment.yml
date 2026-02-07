@@ -21,3 +21,8 @@ spec:
               env:
                  - name: REDIS_HOSTS                                     # Redis deployment referred to backend deployment for internal commsn between the 2 layers
                    value: local:redis:6379
+   strategy: 
+      type: RollingUpdate
+      rollingUpdate:
+         maxSurge: 1
+         maxUnavailable: 1
